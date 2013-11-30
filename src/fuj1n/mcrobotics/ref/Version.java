@@ -1,4 +1,4 @@
-package fuj1n.mcrobotics.lib;
+package fuj1n.mcrobotics.ref;
 
 public class Version {
 

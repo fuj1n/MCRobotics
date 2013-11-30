@@ -7,7 +7,13 @@ import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.network.NetworkMod;
 import fuj1n.mcrobotics.common.*;
 
-@Mod(modid="MCRobotics", name="MCRobotics", version=fuj1n.mcrobotics.lib.Version.VERSION)
+/**
+ * NXT name proposals(obviously cannot use NXT)
+ * BlockOS - Chaz_Turbo
+ *
+ */
+
+@Mod(modid="MCRobotics", name="MCRobotics", version=fuj1n.mcrobotics.ref.Version.VERSION)
 @NetworkMod(clientSideRequired=true, serverSideRequired=false)
 public class MCRobotics {
 
