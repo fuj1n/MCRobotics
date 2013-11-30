@@ -1,0 +1,22 @@
+[
+{
+  "modid": "MCRobotics",
+  "name": "MCRobotics",
+  "description": "Adds robotics to Minecraft.",
+  "version": "v0.1",
+  "mcversion": "1.6.4",
+  "url": "",
+  "updateUrl": "",
+  "authors": [
+    "fuj1n"
+  ],
+  "credits": "All the contributors",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+
+  ]
+}
+]
