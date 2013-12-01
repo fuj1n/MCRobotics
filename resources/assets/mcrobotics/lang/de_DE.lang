@@ -1,0 +1,11 @@
+mcrobotics.gui.assembler.name=Assembler
+mcrobotics.gui.assembler.playerinventory=Inventar
+mcrobotics.gui.assembler.inputs=Inputs
+mcrobotics.gui.assembler.inputs.a=A
+mcrobotics.gui.assembler.inputs.b=B
+mcrobotics.gui.assembler.inputs.c=C
+mcrobotics.gui.assembler.inputs.d=D
+mcrobotics.gui.assembler.outputs=Outputs
+mcrobotics.gui.assembler.outputs.one=1
+mcrobotics.gui.assembler.outputs.two=2
+mcrobotics.gui.assembler.outputs.three=3
