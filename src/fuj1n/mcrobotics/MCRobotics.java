@@ -1,5 +1,7 @@
 package fuj1n.mcrobotics;
 
+import cpw.mods.fml.common.network.NetworkRegistry;
+
 import cpw.mods.fml.common.*;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -9,7 +11,7 @@ import fuj1n.mcrobotics.common.*;
 
 /**
  * NXT name proposals(obviously cannot use NXT)
- * BlockOS - Chaz_Turbo
+ * BlockOS - (as suggested by Chaz_Turbo)
  *
  */
 
@@ -27,6 +29,8 @@ public class MCRobotics {
 	public void preInit(FMLPreInitializationEvent event){
 		proxy.preInit();
 		new ConfigMCRobotics(event.getSuggestedConfigurationFile());
+		
+		NetworkRegistry.instance().registerGuiHandler(instance, new GuiHandler());
 	}
 	
 	@EventHandler
