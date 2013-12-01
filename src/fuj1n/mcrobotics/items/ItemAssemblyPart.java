@@ -1,6 +1,6 @@
 package fuj1n.mcrobotics.items;
 
-import fuj1n.mcrobotics.lib.assembly.PartType;
+import fuj1n.mcrobotics.lib.assembly.EnumPartType;
 import net.minecraft.item.ItemStack;
 
 import fuj1n.mcrobotics.lib.assembly.IAssemblyPart;
@@ -15,7 +15,7 @@ public class ItemAssemblyPart extends Item implements IAssemblyPart {
 	}
 
 	@Override
-	public PartType getPartType(ItemStack item) {
+	public EnumPartType getPartType(ItemStack item) {
 		//TODO return an appropriate part type based on meta
 		return null;
 	}

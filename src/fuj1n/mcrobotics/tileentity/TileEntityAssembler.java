@@ -1,5 +1,7 @@
 package fuj1n.mcrobotics.tileentity;
 
+import net.minecraft.inventory.InventoryBasic;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -8,7 +10,8 @@ import net.minecraft.tileentity.TileEntity;
 public class TileEntityAssembler extends TileEntity implements IInventory {
 
 	private ItemStack[] inventory = new ItemStack[getSizeInventory()];
-
+	public AssemblyInventory assemblyInventory = new AssemblyInventory();
+	
 	@Override
 	public int getSizeInventory() {
 		return 1;
@@ -93,6 +96,14 @@ public class TileEntityAssembler extends TileEntity implements IInventory {
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
 		return true;
+	}
+	
+	public class AssemblyInventory extends InventoryBasic {
+
+		public AssemblyInventory() {
+			super("assemblyInventory", false, 7);
+		}
+		
 	}
 
 }

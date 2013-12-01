@@ -1,5 +1,7 @@
 package fuj1n.mcrobotics.inventory;
 
+import net.minecraft.item.ItemStack;
+
 import net.minecraft.inventory.Slot;
 
 import fuj1n.mcrobotics.tileentity.TileEntityAssembler;
@@ -35,12 +37,25 @@ public class ContainerAssembler extends Container {
 
 	public void bindContainerInventory() {
 		this.addSlotToContainer(new Slot(assembler, 0, 80, 51));
+
+		this.addSlotToContainer(new SlotAssemblyPart(assembler.assemblyInventory, 0, 46, 22, 0, assembler));
+		this.addSlotToContainer(new SlotAssemblyPart(assembler.assemblyInventory, 1, 37, 41, 0, assembler));
+		this.addSlotToContainer(new SlotAssemblyPart(assembler.assemblyInventory, 2, 37, 60, 0, assembler));
+		this.addSlotToContainer(new SlotAssemblyPart(assembler.assemblyInventory, 3, 46, 79, 0, assembler));
+
+		this.addSlotToContainer(new SlotAssemblyPart(assembler.assemblyInventory, 4, 114, 22, 1, assembler));
+		this.addSlotToContainer(new SlotAssemblyPart(assembler.assemblyInventory, 5, 123, 51, 1, assembler));
+		this.addSlotToContainer(new SlotAssemblyPart(assembler.assemblyInventory, 6, 114, 79, 1, assembler));
+	}
+
+	@Override
+	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
+		return null;
 	}
 
 	@Override
 	public boolean canInteractWith(EntityPlayer entityplayer) {
-		//TODO replace with TileEntity call
-		return true;
+		return assembler.isUseableByPlayer(entityplayer);
 	}
 
 }

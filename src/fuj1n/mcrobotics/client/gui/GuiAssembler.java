@@ -20,21 +20,6 @@ public class GuiAssembler extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-//		fontRenderer.drawString("Assembler", 7, -6, 0x404040);
-//		fontRenderer.drawString("Inventory", 8, (ySize - 95) + 2, 0x404040);
-//		
-//		//Tips
-//		fontRenderer.drawString("Inputs", 38, 10, 0x404040);
-//		fontRenderer.drawString("A", 36, 26, 0x404040);
-//		fontRenderer.drawString("B", 27, 45, 0x404040);
-//		fontRenderer.drawString("C", 27, 64, 0x404040);
-//		fontRenderer.drawString("D", 36, 84, 0x404040);
-//		
-//		fontRenderer.drawString("Outputs", 102, 10, 0x404040);
-//		fontRenderer.drawString("1", 135, 26, 0x404040);
-//		fontRenderer.drawString("2", 144, 55, 0x404040);
-//		fontRenderer.drawString("3", 135, 84, 0x404040);
-		
 		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.name"), 7, -6, 0x404040);
 		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.playerinventory"), 8, (ySize - 95) + 2, 0x404040);
 		
