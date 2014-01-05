@@ -1,8 +1,7 @@
 package fuj1n.mcrobotics.inventory;
 
-import fuj1n.mcrobotics.lib.assembly.EnumPartType;
-
-import fuj1n.mcrobotics.lib.assembly.IAssemblyPart;
+import fuj1n.mcrobotics.items.ItemBlockOS;
+import fuj1n.mcrobotics.lib.assembly.*;
 import fuj1n.mcrobotics.tileentity.TileEntityAssembler;
 import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
@@ -27,9 +26,11 @@ public class SlotAssemblyPart extends Slot {
 	    		
 	    		switch(slotAssignment){
 	    		case 0:
-	    			return type == EnumPartType.INPUT;
+	    			return type == EnumPartType.SENSOR;
 	    		case 1:
-	    			return type == EnumPartType.OUTPUT;
+	    			return type == EnumPartType.ACTUATOR;
+	    		case 2:
+	    			return par1ItemStack.getItem() instanceof ItemBlockOS;
 	    		}
 	    	}
     	}

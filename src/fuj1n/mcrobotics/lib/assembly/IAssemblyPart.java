@@ -5,6 +5,5 @@ import net.minecraft.item.ItemStack;
 public interface IAssemblyPart {
 
 	public EnumPartType getPartType(ItemStack item);
-	public boolean isActuator(ItemStack item);
 	
 }

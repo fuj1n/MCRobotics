@@ -20,10 +20,4 @@ public class ItemAssemblyPart extends Item implements IAssemblyPart {
 		return null;
 	}
 
-	@Override
-	public boolean isActuator(ItemStack item) {
-		// TODO return whether the part is an actuator
-		return false;
-	}
-
 }

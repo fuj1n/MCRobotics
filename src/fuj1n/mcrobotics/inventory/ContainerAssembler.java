@@ -36,7 +36,7 @@ public class ContainerAssembler extends Container {
 	}
 
 	public void bindContainerInventory() {
-		this.addSlotToContainer(new Slot(assembler, 0, 80, 51));
+		this.addSlotToContainer(new SlotAssemblyPart(assembler, 0, 80, 51, 2, assembler));
 
 		this.addSlotToContainer(new SlotAssemblyPart(assembler.assemblyInventory, 0, 46, 22, 0, assembler));
 		this.addSlotToContainer(new SlotAssemblyPart(assembler.assemblyInventory, 1, 37, 41, 0, assembler));

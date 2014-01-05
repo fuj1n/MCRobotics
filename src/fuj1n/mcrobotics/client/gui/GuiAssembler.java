@@ -24,13 +24,13 @@ public class GuiAssembler extends GuiContainer {
 		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.playerinventory"), 8, (ySize - 95) + 2, 0x404040);
 		
 		//Tips
-		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.inputs"), 38, 10, 0x404040);
+		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.inputs"), 34, 10, 0x404040);
 		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.inputs.a"), 36, 26, 0x404040);
 		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.inputs.b"), 27, 45, 0x404040);
 		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.inputs.c"), 27, 64, 0x404040);
 		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.inputs.d"), 36, 84, 0x404040);
 		
-		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.outputs"), 102, 10, 0x404040);
+		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.outputs"), 97, 10, 0x404040);
 		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.outputs.one"), 135, 26, 0x404040);
 		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.outputs.two"), 144, 55, 0x404040);
 		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.outputs.three"), 135, 84, 0x404040);
