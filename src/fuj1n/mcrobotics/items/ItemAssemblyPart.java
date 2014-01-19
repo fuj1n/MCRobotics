@@ -9,8 +9,7 @@ import net.minecraft.item.Item;
 
 public class ItemAssemblyPart extends Item implements IAssemblyPart {
 
-	public ItemAssemblyPart(int par1) {
-		super(par1);
+	public ItemAssemblyPart() {
 		this.setHasSubtypes(true);
 	}
 

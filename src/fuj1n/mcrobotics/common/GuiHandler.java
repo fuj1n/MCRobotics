@@ -14,7 +14,7 @@ public class GuiHandler implements IGuiHandler{
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch(ID){
 		case 0:
-			return new ContainerAssembler(player, (TileEntityAssembler)world.getBlockTileEntity(x, y, z));
+			return new ContainerAssembler(player, (TileEntityAssembler)world.func_147438_o(x, y, z));
 		}
 		return null;
 	}
@@ -23,7 +23,7 @@ public class GuiHandler implements IGuiHandler{
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch(ID){
 		case 0:
-			return new GuiAssembler(player, (TileEntityAssembler)world.getBlockTileEntity(x, y, z), x, y, z);
+			return new GuiAssembler(player, (TileEntityAssembler)world.func_147438_o(x, y, z), x, y, z);
 		}
 		return null;
 	}

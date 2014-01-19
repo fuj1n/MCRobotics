@@ -1,12 +1,10 @@
 package fuj1n.mcrobotics;
 
-import cpw.mods.fml.common.network.NetworkRegistry;
-
 import cpw.mods.fml.common.*;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.*;
-import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import fuj1n.mcrobotics.common.*;
 
 /**
@@ -16,7 +14,6 @@ import fuj1n.mcrobotics.common.*;
  */
 
 @Mod(modid="MCRobotics", name="MCRobotics", version=fuj1n.mcrobotics.ref.Version.VERSION)
-@NetworkMod(clientSideRequired=true, serverSideRequired=false)
 public class MCRobotics {
 
 	@Instance("MCRobotics")
@@ -30,13 +27,14 @@ public class MCRobotics {
 		proxy.preInit();
 		new ConfigMCRobotics(event.getSuggestedConfigurationFile());
 		
-		NetworkRegistry.instance().registerGuiHandler(instance, new GuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
+		
+		new Content();
 	}
 	
 	@EventHandler
 	public void Init(FMLInitializationEvent event){
 		proxy.Init();
-		new Content();
 	}
 	
 	@EventHandler

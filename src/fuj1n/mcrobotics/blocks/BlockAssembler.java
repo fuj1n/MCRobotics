@@ -1,5 +1,7 @@
 package fuj1n.mcrobotics.blocks;
 
+import net.minecraft.block.material.MapColor;
+
 import fuj1n.mcrobotics.tileentity.TileEntityAssembler;
 
 import fuj1n.mcrobotics.MCRobotics;
@@ -14,18 +16,18 @@ import net.minecraft.block.material.Material;
 
 public class BlockAssembler extends BlockContainer {
 
-	public BlockAssembler(int par1) {
-		super(par1, Material.iron);
+	public BlockAssembler() {
+		super(Material.field_151573_f);
 	}
 
 	@Override
-	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
+	public boolean func_149727_a(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 		par5EntityPlayer.openGui(MCRobotics.instance, 0, par1World, par2, par3, par4);
 		return true;
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
+	public TileEntity func_149915_a(World world, int meta) {
 		return new TileEntityAssembler();
 	}
 

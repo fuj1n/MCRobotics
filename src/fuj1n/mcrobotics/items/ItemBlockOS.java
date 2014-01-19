@@ -11,17 +11,16 @@ import net.minecraft.nbt.NBTTagCompound;
  */
 public class ItemBlockOS extends Item{
 
-	public ItemBlockOS(int par1) {
-		super(par1);
+	public ItemBlockOS() {
 	}
 	
 	public void setSensor(ItemStack is, char letter, ItemStack value){
 		if(is.getTagCompound() == null || is.getTagCompound().getCompoundTag("Assembly") != null){
 			if(is.getTagCompound() != null){
-				is.getTagCompound().setCompoundTag("Assembly", new NBTTagCompound());
+				is.getTagCompound().setTag("Assembly", new NBTTagCompound());
 			}else{
 				is.setTagCompound(new NBTTagCompound());
-				is.getTagCompound().setCompoundTag("Assembly", new NBTTagCompound());
+				is.getTagCompound().setTag("Assembly", new NBTTagCompound());
 			}
 		}
 		
@@ -33,10 +32,10 @@ public class ItemBlockOS extends Item{
 	public void setActuator(ItemStack is, int i, ItemStack value){
 		if(is.getTagCompound() == null || is.getTagCompound().getCompoundTag("Assembly") != null){
 			if(is.getTagCompound() != null){
-				is.getTagCompound().setCompoundTag("Assembly", new NBTTagCompound());
+				is.getTagCompound().setTag("Assembly", new NBTTagCompound());
 			}else{
 				is.setTagCompound(new NBTTagCompound());
-				is.getTagCompound().setCompoundTag("Assembly", new NBTTagCompound());
+				is.getTagCompound().setTag("Assembly", new NBTTagCompound());
 			}
 		}
 		
