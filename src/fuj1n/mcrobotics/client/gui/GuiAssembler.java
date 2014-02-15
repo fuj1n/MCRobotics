@@ -17,14 +17,14 @@ public class GuiAssembler extends GuiContainer {
 
 	public GuiAssembler(EntityPlayer player, TileEntityAssembler assembler, int x, int y, int z) {
 		super(new ContainerAssembler(player, assembler));
-		field_147000_g = 190;
+		ySize = 190;
 	}
 
 	@Override
-	protected void func_146979_b(int par1, int par2) {
-		FontRenderer fontRenderer = this.field_146297_k.fontRenderer;
+	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
+		FontRenderer fontRenderer = this.mc.fontRenderer;
 		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.name"), 7, -6, 0x404040);
-		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.playerinventory"), 8, (field_147000_g - 95) + 2, 0x404040);
+		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.playerinventory"), 8, (ySize - 95) + 2, 0x404040);
 		
 		//Tips
 		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.inputs"), 34, 10, 0x404040);
@@ -40,12 +40,12 @@ public class GuiAssembler extends GuiContainer {
 	}
 
 	@Override
-	protected void func_146976_a(float f, int i, int j) {
+	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.field_146297_k.getTextureManager().bindTexture(background);
-		int l = (field_146294_l - field_146999_f) / 2;
-		int i1 = (field_146295_m - field_147000_g) / 2;
-		drawTexturedModalRect(l, i1, 0, 0, field_146999_f, field_147000_g);
+		this.mc.getTextureManager().bindTexture(background);
+		int l = (width - xSize) / 2;
+		int i1 = (height - ySize) / 2;
+		drawTexturedModalRect(l, i1, 0, 0, xSize, ySize);
 		drawTexturedModalRect(l, i1 - 10, 0, 191, 63, 11);
 	}
 }

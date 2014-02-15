@@ -16,7 +16,7 @@ public class Content {
 	}
 	
 	public void addBlocks(){
-		assembler = new BlockAssembler().func_149663_c("mcrobotics.assembler")/*.func_149658_d("stone")*/.func_149647_a(CreativeTabs.tabAllSearch);
+		assembler = new BlockAssembler().setBlockName("mcrobotics.assembler")/*.func_149658_d("stone")*/.setCreativeTab(CreativeTabs.tabAllSearch);
 	}
 	
 	public void registerBlocks(){

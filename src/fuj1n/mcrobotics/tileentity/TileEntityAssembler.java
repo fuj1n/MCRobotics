@@ -61,12 +61,12 @@ public class TileEntityAssembler extends TileEntity implements IInventory {
 	}
 
 	@Override
-	public String func_145825_b() {
+	public String getInventoryName() {
 		return "fuj1n.inventory.assembler";
 	}
 
 	@Override
-	public boolean func_145818_k_() {
+	public boolean hasCustomInventoryName() {
 		return false;
 	}
 
@@ -76,21 +76,16 @@ public class TileEntityAssembler extends TileEntity implements IInventory {
 	}
 
 	@Override
-	public void onInventoryChanged() {
-
-	}
-
-	@Override
 	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
-		return this.field_145850_b.func_147438_o(this.field_145851_c, this.field_145848_d, this.field_145849_e) != this ? false : entityplayer.getDistanceSq((double) this.field_145851_c + 0.5D, (double) this.field_145848_d + 0.5D, (double) this.field_145849_e + 0.5D) <= 64.0D;
+		return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : entityplayer.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D, (double) this.zCoord + 0.5D) <= 64.0D;
 	}
 
 	@Override
-	public void openChest() {
+	public void openInventory() {
 	}
 
 	@Override
-	public void closeChest() {
+	public void closeInventory() {
 	}
 
 	@Override
