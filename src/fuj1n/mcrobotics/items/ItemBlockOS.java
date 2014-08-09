@@ -1,5 +1,14 @@
 package fuj1n.mcrobotics.items;
 
+import cpw.mods.fml.common.Loader;
+
+import net.minecraft.util.EnumChatFormatting;
+
+import cpw.mods.fml.relauncher.*;
+import java.util.List;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+
 import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
 
@@ -34,7 +43,7 @@ public class ItemBlockOS extends Item {
 
 		if (value == null) {
 			is.getTagCompound().getCompoundTag("Assembly").removeTag("Sensor" + Character.toUpperCase(letter));
-			
+
 			return;
 		}
 
@@ -63,10 +72,10 @@ public class ItemBlockOS extends Item {
 
 		if (value == null) {
 			is.getTagCompound().getCompoundTag("Assembly").removeTag("Actuator" + i);
-			
+
 			return;
 		}
-		
+
 		NBTTagCompound itemData = new NBTTagCompound();
 		value.writeToNBT(itemData);
 		is.getTagCompound().getCompoundTag("Assembly").setTag("Actuator" + i, itemData);
@@ -134,4 +143,33 @@ public class ItemBlockOS extends Item {
 		return ItemStack.loadItemStackFromNBT(itemData);
 	}
 
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag1) {
+		if (org.lwjgl.input.Keyboard.isKeyDown(42) || org.lwjgl.input.Keyboard.isKeyDown(54)) {
+			list.add("Assembly Information: ");
+			list.add(EnumChatFormatting.ITALIC.GREEN + "Sensors: ");
+			for (char c = 'A'; c < 'E'; c++) {
+				ItemStack sensor = getSensor(is, c);
+
+				if (sensor != null) {
+					list.add(c + ": " + sensor.getDisplayName());
+				} else {
+					list.add(c + ": ");
+				}
+			}
+			list.add(EnumChatFormatting.ITALIC.GOLD + "Actuators: ");
+			for (byte b = 1; b < 4; b++) {
+				ItemStack actuator = getActuator(is, b);
+
+				if (actuator != null) {
+					list.add(b + ": " + actuator.getDisplayName());
+				} else {
+					list.add(b + ": ");
+				}
+			}
+		} else {
+			list.add(EnumChatFormatting.GRAY + "Hold <" + EnumChatFormatting.DARK_PURPLE + "Shift" + EnumChatFormatting.GRAY + "> for assembly information...");
+		}
+	}
 }

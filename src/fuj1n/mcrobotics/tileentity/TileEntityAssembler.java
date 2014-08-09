@@ -23,9 +23,9 @@ public class TileEntityAssembler extends TileEntity implements IInventory {
 	@Override
 	public void writeToNBT(NBTTagCompound nbtTagCompound) {
 		super.writeToNBT(nbtTagCompound);
-		
+
 		assemblyInventory.writeToBlockOS(inventory[0]);
-		
+
 		NBTTagList nbttaglist = new NBTTagList();
 
 		for (int i = 0; i < this.inventory.length; ++i) {
@@ -55,7 +55,7 @@ public class TileEntityAssembler extends TileEntity implements IInventory {
 				this.inventory[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 			}
 		}
-		
+
 		assemblyInventory.readFromBlockOS(inventory[0]);
 	}
 
@@ -72,12 +72,21 @@ public class TileEntityAssembler extends TileEntity implements IInventory {
 			if (this.inventory[i].stackSize <= j) {
 				itemstack = this.inventory[i];
 				this.inventory[i] = null;
+
+				if (i == 0) {
+					assemblyInventory.readFromBlockOS(null);
+				}
+
 				return itemstack;
 			} else {
 				itemstack = this.inventory[i].splitStack(j);
 
 				if (this.inventory[i].stackSize == 0) {
 					this.inventory[i] = null;
+				}
+
+				if (i == 0) {
+					assemblyInventory.readFromBlockOS(null);
 				}
 
 				return itemstack;
@@ -106,10 +115,10 @@ public class TileEntityAssembler extends TileEntity implements IInventory {
 		}
 	}
 
-	protected void onSubInventoryChanged(){
+	protected void onSubInventoryChanged() {
 		assemblyInventory.writeToBlockOS((inventory[0]));
 	}
-	
+
 	@Override
 	public String getInventoryName() {
 		return "fuj1n.inventory.assembler";
@@ -196,14 +205,22 @@ public class TileEntityAssembler extends TileEntity implements IInventory {
 				super.setInventorySlotContents(i, null);
 			}
 		}
+
+		@Override
+		public void setInventorySlotContents(int p_70299_1_, ItemStack p_70299_2_) {
+			super.setInventorySlotContents(p_70299_1_, p_70299_2_);
+
+			onSubInventoryChanged();
+		}
 		
 		@Override
-		public void setInventorySlotContents(int p_70299_1_, ItemStack p_70299_2_)
-	    {
-	        super.setInventorySlotContents(p_70299_1_, p_70299_2_);
-	        
-	        onSubInventoryChanged();
-	    }
+		public ItemStack decrStackSize(int i, int j){
+			ItemStack is = super.decrStackSize(i, j);
+			
+			onSubInventoryChanged();
+			
+			return is;
+		}
 
 	}
 
