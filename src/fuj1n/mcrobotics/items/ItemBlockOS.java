@@ -33,7 +33,7 @@ public class ItemBlockOS extends Item {
 		}
 
 		if (value == null) {
-			is.getTagCompound().getCompoundTag("Assembly").setTag("Sensor" + Character.toUpperCase(letter), null);
+			is.getTagCompound().getCompoundTag("Assembly").removeTag("Sensor" + Character.toUpperCase(letter));
 			
 			return;
 		}
@@ -62,7 +62,7 @@ public class ItemBlockOS extends Item {
 		}
 
 		if (value == null) {
-			is.getTagCompound().getCompoundTag("Assembly").setTag("Actuator" + i, null);
+			is.getTagCompound().getCompoundTag("Assembly").removeTag("Actuator" + i);
 			
 			return;
 		}
