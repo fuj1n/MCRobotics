@@ -1,20 +1,62 @@
 package fuj1n.mcrobotics.tileentity;
 
-import net.minecraft.inventory.InventoryBasic;
+import fuj1n.mcrobotics.ref.Version;
+
+import fuj1n.mcrobotics.items.ItemBlockOS;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.*;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityAssembler extends TileEntity implements IInventory {
 
 	private ItemStack[] inventory = new ItemStack[getSizeInventory()];
 	public AssemblyInventory assemblyInventory = new AssemblyInventory();
-	
+
 	@Override
 	public int getSizeInventory() {
 		return 1;
+	}
+
+	@Override
+	public void writeToNBT(NBTTagCompound nbtTagCompound) {
+		super.writeToNBT(nbtTagCompound);
+		
+		assemblyInventory.writeToBlockOS(inventory[0]);
+		
+		NBTTagList nbttaglist = new NBTTagList();
+
+		for (int i = 0; i < this.inventory.length; ++i) {
+			if (this.inventory[i] != null) {
+				NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+				nbttagcompound1.setByte("Slot", (byte) i);
+				this.inventory[i].writeToNBT(nbttagcompound1);
+				nbttaglist.appendTag(nbttagcompound1);
+			}
+		}
+
+		nbtTagCompound.setTag("Items", nbttaglist);
+	}
+
+	@Override
+	public void readFromNBT(NBTTagCompound nbtTagCompound) {
+		super.readFromNBT(nbtTagCompound);
+
+		NBTTagList nbttaglist = nbtTagCompound.getTagList("Items", 10);
+		this.inventory = new ItemStack[this.getSizeInventory()];
+
+		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
+			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
+			byte b0 = nbttagcompound1.getByte("Slot");
+
+			if (b0 >= 0 && b0 < this.inventory.length) {
+				this.inventory[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+			}
+		}
+		
+		assemblyInventory.readFromBlockOS(inventory[0]);
 	}
 
 	@Override
@@ -57,9 +99,17 @@ public class TileEntityAssembler extends TileEntity implements IInventory {
 	public void setInventorySlotContents(int i, ItemStack itemstack) {
 		if (i >= 0 && i < inventory.length) {
 			inventory[i] = itemstack;
+
+			if (i == 0) {
+				assemblyInventory.readFromBlockOS(itemstack);
+			}
 		}
 	}
 
+	protected void onSubInventoryChanged(){
+		assemblyInventory.writeToBlockOS((inventory[0]));
+	}
+	
 	@Override
 	public String getInventoryName() {
 		return "fuj1n.inventory.assembler";
@@ -92,13 +142,69 @@ public class TileEntityAssembler extends TileEntity implements IInventory {
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
 		return true;
 	}
-	
+
 	public class AssemblyInventory extends InventoryBasic {
 
 		public AssemblyInventory() {
-			super("assemblyInventory", false, 7);
+			super(Version.MODID + ".assemblyInventory", false, 7);
+		}
+
+		public void writeToBlockOS(ItemStack is) {
+			if (is == null) {
+				return;
+			}
+
+			if (!(is.getItem() instanceof ItemBlockOS)) {
+				throw new IllegalArgumentException("Error writing inventory to BlockOS, the item " + is.getItem() + " is not an instance of ItemBlockOS.");
+			}
+
+			ItemBlockOS blockOS = (ItemBlockOS) is.getItem();
+
+			for (char c = 'A'; c < 'E'; c++) {
+				blockOS.setSensor(is, c, this.getStackInSlot(Math.abs('A' - c)));
+			}
+
+			for (byte i = 0; i < 3; i++) {
+				blockOS.setActuator(is, (byte) (i + 1), this.getStackInSlot(4 + i));
+			}
+		}
+
+		public void readFromBlockOS(ItemStack is) {
+			if (is == null) {
+				clearInventory();
+
+				return;
+			}
+
+			if (!(is.getItem() instanceof ItemBlockOS)) {
+				throw new IllegalArgumentException("Error reading inventory from BlockOS, the item " + is.getItem() + " is not an instance of ItemBlockOS.");
+			}
+
+			ItemBlockOS blockOS = (ItemBlockOS) is.getItem();
+
+			for (char c = 'A'; c < 'E'; c++) {
+				super.setInventorySlotContents(Math.abs('A' - c), blockOS.getSensor(is, c));
+			}
+
+			for (byte i = 0; i < 3; i++) {
+				super.setInventorySlotContents(4 + i, blockOS.getActuator(is, (byte) (i + 1)));
+			}
+		}
+
+		public void clearInventory() {
+			for (int i = 0; i < this.getSizeInventory(); i++) {
+				super.setInventorySlotContents(i, null);
+			}
 		}
 		
+		@Override
+		public void setInventorySlotContents(int p_70299_1_, ItemStack p_70299_2_)
+	    {
+	        super.setInventorySlotContents(p_70299_1_, p_70299_2_);
+	        
+	        onSubInventoryChanged();
+	    }
+
 	}
 
 }

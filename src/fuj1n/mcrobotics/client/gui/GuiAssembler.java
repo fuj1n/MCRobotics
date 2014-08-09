@@ -1,15 +1,12 @@
 package fuj1n.mcrobotics.client.gui;
 
-import net.minecraft.util.StatCollector;
-
 import fuj1n.mcrobotics.inventory.ContainerAssembler;
 import fuj1n.mcrobotics.tileentity.TileEntityAssembler;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import org.lwjgl.opengl.GL11;
-
-import net.minecraft.client.gui.FontRenderer;
 
 public class GuiAssembler extends GuiContainer {
 
@@ -25,14 +22,14 @@ public class GuiAssembler extends GuiContainer {
 		FontRenderer fontRenderer = this.mc.fontRenderer;
 		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.name"), 7, -6, 0x404040);
 		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.playerinventory"), 8, (ySize - 95) + 2, 0x404040);
-		
+
 		//Tips
 		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.inputs"), 34, 10, 0x404040);
 		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.inputs.a"), 36, 26, 0x404040);
 		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.inputs.b"), 27, 45, 0x404040);
 		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.inputs.c"), 27, 64, 0x404040);
 		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.inputs.d"), 36, 84, 0x404040);
-		
+
 		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.outputs"), 97, 10, 0x404040);
 		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.outputs.one"), 135, 26, 0x404040);
 		fontRenderer.drawString(StatCollector.translateToLocal("mcrobotics.gui.assembler.outputs.two"), 144, 55, 0x404040);

@@ -1,3 +1,8 @@
+//Blocks
+tile.mcrobotics.assembler.name=BlockOS Assembler
+//Items
+item.mcrobotics.blockos.name=BlockOS
+//Gui
 mcrobotics.gui.assembler.name=Assembler
 mcrobotics.gui.assembler.playerinventory=Inventory
 mcrobotics.gui.assembler.inputs=Sensors
