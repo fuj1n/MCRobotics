@@ -1,0 +1,16 @@
+//Blocks
+tile.mcrobotics.assembler.name=Montownik BlockOS
+//Items
+item.mcrobotics.blockos.name=BlockOS
+//Gui
+mcrobotics.gui.assembler.name=Montownik
+mcrobotics.gui.assembler.playerinventory=Ekwipunek
+mcrobotics.gui.assembler.inputs=Sensory
+mcrobotics.gui.assembler.inputs.a=A
+mcrobotics.gui.assembler.inputs.b=B
+mcrobotics.gui.assembler.inputs.c=C
+mcrobotics.gui.assembler.inputs.d=D
+mcrobotics.gui.assembler.outputs=Uruchamiacze
+mcrobotics.gui.assembler.outputs.one=1
+mcrobotics.gui.assembler.outputs.two=2
+mcrobotics.gui.assembler.outputs.three=3
